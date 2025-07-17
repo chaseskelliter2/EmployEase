@@ -1,171 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="EmployEase provides tailored employment solutions, connecting businesses with top talent and job seekers with dream careers in Grande Prairie, AB.">
-  <meta name="keywords" content="employment solutions, laborer jobs, recruitment services, temporary staffing, Grande Prairie">
-  <meta name="author" content="EmployEase">
-  <title>EmployEase - Your Employment Solutions Partner</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmployEase</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <!-- React and ReactDOM -->
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <!-- Babel for JSX -->
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.9/Babel.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.244.0/dist/umd/lucide.min.js"></script>
 </head>
-<body class="bg-gray-100">
+<body>
+  <div id="root"></div>
 
-  <!-- Navigation -->
-  <nav class="bg-orange-600 text-white p-4 sticky top-0 z-10 shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">EmployEase</h1>
-      <ul class="flex space-x-6">
-        <li><a href="#home" class="hover:underline">Home</a></li>
-        <li><a href="#services" class="hover:underline">Services</a></li>
-        <li><a href="#about" class="hover:underline">About</a></li>
-        <li><a href="#contact" class="hover:underline">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <script type="text/babel">
+    const { useEffect } = React;
 
-  <!-- Hero Section -->
-  <section id="home" class="bg-orange-500 text-white py-20 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?workplace')">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">Welcome to EmployEase</h2>
-      <p class="text-lg mb-6">Your trusted partner for tailored employment solutions. We connect businesses with top talent and job seekers with their dream careers.</p>
-      <a href="#contact" class="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold shadow-md hover:bg-orange-100 transition">Get a Free Quote</a>
-    </div>
-  </section>
+    // Mock Button and Card components for simplicity
+    const Button = ({ className, children, size, variant, onClick }) => {
+      const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-300';
+      const sizeStyles = size === 'lg' ? 'px-8 py-4 text-lg' : 'px-4 py-2 text-base';
+      const variantStyles = variant === 'outline' 
+        ? 'border border-orange-600 text-orange-600 hover:bg-orange-50' 
+        : 'bg-orange-600 text-white hover:bg-orange-700 hover:scale-105 shadow-lg hover:shadow-xl';
+      return (
+        <button className={`${baseStyles} ${sizeStyles} ${variantStyles} ${className}`} onClick={onClick}>
+          {children}
+        </button>
+      );
+    };
 
-  <!-- Services Section -->
-  <section id="services" class="py-16 bg-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-12 text-gray-800">Our Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <!-- Service Card -->
-        <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-3 text-orange-600">Part-Time & Full-Time Labourers</h3>
-          <p class="text-gray-700">We supply reliable part-time and full-time labourers to meet your workforce needs, ensuring flexibility and efficiency.</p>
-          <a href="#contact" class="text-orange-600 font-medium hover:underline mt-4 inline-block">Learn More</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-3 text-orange-600">Temporary Fill-In Labour</h3>
-          <p class="text-gray-700">Quickly fill labor gaps with skilled workers ready to support your project needs immediately.</p>
-          <a href="#contact" class="text-orange-600 font-medium hover:underline mt-4 inline-block">Learn More</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-3 text-orange-600">Residential Labour</h3>
-          <p class="text-gray-700">Providing specialized labour for residential projects tailored to your timeline and scope.</p>
-          <a href="#contact" class="text-orange-600 font-medium hover:underline mt-4 inline-block">Learn More</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-3 text-orange-600">Employee Placement</h3>
-          <p class="text-gray-700">Matching job seekers with opportunities that align with their strengths and career goals.</p>
-          <a href="#contact" class="text-orange-600 font-medium hover:underline mt-4 inline-block">Learn More</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-3 text-orange-600">Recruitment Services</h3>
-          <p class="text-gray-700">Full-service recruitment to find the right people for your growing team or project.</p>
-          <a href="#contact" class="text-orange-600 font-medium hover:underline mt-4 inline-block">Learn More</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-3 text-orange-600">Temporary Employee Services</h3>
-          <p class="text-gray-700">Flexible staffing to support business surges, absences, and special jobs on-demand.</p>
-          <a href="#contact" class="text-orange-600 font-medium hover:underline mt-4 inline-block">Learn More</a>
-        </div>
+    const Card = ({ className, children }) => (
+      <div className={`bg-white rounded-lg ${className}`}>
+        {children}
       </div>
-    </div>
-  </section>
+    );
 
-  <!-- About Section -->
-  <section id="about" class="bg-gray-100 py-16">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8 text-gray-800">About EmployEase</h2>
-      <p class="text-lg mb-6 text-gray-700 max-w-3xl mx-auto">At EmployEase, we’re dedicated to bridging the gap between employers and employees. Our approach is personal, efficient, and focused on long-term success. Led by Chase Skelliter, our team is passionate about helping people find the right fit — whether you're hiring or job seeking.</p>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="bg-white py-16">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8 text-gray-800">Contact Us</h2>
-      <p class="text-lg mb-6">Have a question or ready to get started? Reach out below.</p>
-      <p class="text-lg mb-2"><strong>Contact:</strong> Chase Skelliter</p>
-      <p class="text-lg mb-2"><strong>Phone:</strong> <a href="tel:+17805189538" class="text-orange-600 hover:underline">780-518-9538</a></p>
-      <p class="text-lg mb-6"><strong>Email:</strong> <a href="mailto:chaseskr@gmail.com" class="text-orange-600 hover:underline">chaseskr@gmail.com</a></p>
-
-      <div class="max-w-lg mx-auto">
-        <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST" class="text-left">
-          <div class="flex justify-center gap-6 mb-4 text-gray-700">
-            <label class="flex items-center gap-2">
-              <input type="radio" name="inquiry" value="looking-for-work" required />
-              Looking for Work
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="inquiry" value="looking-for-workers" />
-              Looking for Workers
-            </label>
-          </div>
-          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded-lg" required />
-          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded-lg" required />
-          <textarea name="message" placeholder="Your Message" rows="5" class="w-full p-3 mb-4 border border-gray-300 rounded-lg" required></textarea>
-          <button type="submit" class="w-full bg-orange-600 text-white py-3 rounded-full font-semibold hover:bg-orange-700 transition">Send Message</button>
-          <p id="form-message" class="text-green-600 mt-4 hidden">Your message has been sent successfully!</p>
-        </form>
+    const CardContent = ({ className, children }) => (
+      <div className={`p-8 ${className}`}>
+        {children}
       </div>
-    </div>
-  </section>
+    );
 
-  <!-- Footer -->
-  <footer class="bg-orange-600 text-white py-4">
-    <div class="container mx-auto text-center">
-      <p>© 2025 EmployEase. All rights reserved.</p>
-    </div>
-  </footer>
+    function HomePage() {
+      useEffect(() => {
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-  <!-- Smooth Scroll + Form Logic -->
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const formMessage = document.getElementById('form-message');
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+        // Smooth scrolling for navigation links
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
         });
+      }, []);
 
-        if (response.ok) {
-          formMessage.classList.remove('hidden');
-          formMessage.textContent = 'Your message has been sent successfully!';
-          form.reset();
-          setTimeout(() => formMessage.classList.add('hidden'), 5000);
-        } else {
-          formMessage.classList.remove('hidden');
-          formMessage.textContent = 'Error sending message. Please try again.';
+      const services = [
+        {
+          icon: 'Users',
+          title: "Part-Time & Full-Time Labourers",
+          description: "Dependable workers for short- or long-term projects with proven track records."
+        },
+        {
+          icon: 'Clock',
+          title: "Temporary Fill-In Labour Positions",
+          description: "Quick solutions for temporary labour needs with immediate availability."
+        },
+        {
+          icon: 'Home',
+          title: "Residential Labour",
+          description: "Specialized labour for residential projects with attention to detail."
+        },
+        {
+          icon: 'Building',
+          title: "Employee Placement",
+          description: "Permanent employee recruitment matching the right talent to your business."
+        },
+        {
+          icon: 'Search',
+          title: "Recruitment Services",
+          description: "Streamlined hiring processes that save time and ensure quality matches."
+        },
+        {
+          icon: 'UserPlus',
+          title: "Temporary Employee Services",
+          description: "Flexible staffing solutions that adapt to your business needs."
         }
-      } catch {
-        formMessage.classList.remove('hidden');
-        formMessage.textContent = 'Error sending message. Please try again.';
-      }
-    });
-  </script>
+      ];
 
+      const whyChooseUs = [
+        {
+          icon: 'ShieldCheck',
+          title: "Reliable & Vetted",
+          description: "Every candidate undergoes a thorough vetting process to ensure they are reliable and skilled for your needs."
+        },
+        {
+          icon: 'Award',
+          title: "Quality Guaranteed",
+          description: "We stand by the quality of our placements, ensuring you get the best talent to drive your projects forward."
+        },
+        {
+          icon: 'Briefcase',
+          title: "Industry Expertise",
+          description: "Our team has deep industry knowledge, allowing us to find the perfect match for any role or project."
+        }
+      ];
+
+      return (
+        <div className="min-h-screen bg-white" style={{ fontFamily: "'Roboto'" }}>
+          {/* Navigation */}
+          <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <div className="flex items-center">
+                  <a href="#home" className="text-2xl font-bold text-orange-600" style={{ fontFamily: "'Merriweather'" }}>
+                    EmployEase
+                  </a>
+                </div>
+                <div className="hidden md:flex space-x-8">
+                  <a href="#home" className="text-gray-700 hover:text-orange-600 transition-colors duration-200 font-medium">Home</a>
+                  <a href="#services" className="text-gray-700 hover:text-orange-600 transition-colors duration-200 font-medium">Services</a>
+                  <a href="#about" className="text-gray-700 hover:text-orange-600 transition-colors duration-200 font-medium">About</a>
+                  <a href="#contact" className="text-gray-700 hover:text-orange-600 transition-colors duration-200 font-medium">Contact</a>
+                </div>
+                <div className="md:hidden">
+                  <button className="text-gray-700 hover:text-orange-600 transition-colors duration-200">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          {/* Hero Section */}
+          <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-50 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-orange-600/5"></div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <div className="max-w-4xl mx-auto">
+                <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight" style={{ fontFamily: "'Merriweather'" }}>
+                  Your Trusted Partner for
+                  <span className="text-orange-600 block">Labour Solutions</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                  Your trusted partner for tailored employment solutions. We connect businesses with top talent and job seekers with their dream careers.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    size="lg"
+                    className="rounded-full"
+                    onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get a Free Quote
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full"
+                    onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    View Our Services
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeProps={{ strokeWidth: 2 }} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </section>
+
+          {/* Services Section */}
+          <section id="services" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Merriweather'" }}>Our Services</h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Comprehensive labour and recruitment solutions tailored to meet your business needs
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service Tap to copy this code to the clipboardservice, index) => (
+                  <Card
+                    key={index}
+                    className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-gradient-to-br from-white to-orange-50/30"
+                  >
+                    <CardContent className="p-8">
+                      <div className="flex items-center justify-center w-16 h-16 bg-orange-100 rounded-2xl mb-6 group-hover:bg-orange-200 transition-colors duration-300">
+                        <i data-lucide={service.icon} className="w-8 h-8 text-orange-600"></i>
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4" style={{ fontFamily: "'Merriweather'" }}>{service.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Why Choose Us Section */}
+          <section id="why-choose-us" className="py-20 bg-slate-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Merriweather'" }}>Why Partner with EmployEase?</h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  We are committed to providing exceptional service and delivering results you can count on.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {whyChooseUs.map((item, index) => (
+                  <div key={index} className="text-center p-6">
+                    <div className="flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-6 mx-auto">
+                      <i data-lucide={item.icon} className="w-8 h-8 text-orange-600"></i>
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-3" style={{ fontFamily: "'Merriweather'" }}>{item.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Our Process Section */}
+          <section id="process" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Merriweather'" }}>Our Simple Process</h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Finding the right talent is easy. Here's how we make it happen in three simple steps.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div className="text-center">
+                  <div className="flex items-center justify-center w-20 h-20 bg-orange-100 rounded-full mb-4 mx-auto font-bold text-2xl text-orange-600">1</div>
+                  <h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: "'Merriweather'" }}>Discovery</h3>
+                  <p className="text-gray-600">We start by understanding your specific needs, project scope, and company culture.</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center w-20 h-20 bg-orange-100 rounded-full mb-4 mx-auto font-bold text-2xl text-orange-600">2</div>
+                  <h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: "'Merriweather'" }}>Matching</h3>
+                  <p className="text-gray-600">Our experts search our vetted talent pool to find the perfect candidates for your role.</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center w-20 h-20 bg-orange-100 rounded-full mb-4 mx-auto font-bold text-2xl text-orange-600">3</div>
+                  <h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: "'Merriweather'" }}>Placement</h3>
+                  <p className="text-gray-600">We handle the logistics to ensure a smooth onboarding and successful integration.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* About Section */}
+          <section id="about" className="py-20 bg-gradient-to-br from-orange-50 to-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8" style={{ fontFamily: "'Merriweather'" }}>About EmployEase</h2>
+                <p className="text-xl text-gray-700 leading-relaxed">
+                  At EmployEase, we're dedicated to bridging the gap between employers and employees. Our approach is personal, efficient, and focused on long-term success. Led by Chase Skelliter, our team is passionate about helping people find the right fit — whether you're hiring or job seeking.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section id="contact" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8" style={{ fontFamily: "'Merriweather'" }}>Ready to Build Your Team?</h2>
+                <p className="text-xl text-gray-600 mb-12">
+                  Contact us today for a free, no-obligation quote.
+                </p>
+                <div className="bg-gradient-to-br from-orange-50 to-white rounded-3xl p-8 md:p-12 shadow-xl">
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div className="space-y-6">
+                      <div className="text-left">
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-6" style={{ fontFamily: "'Merriweather'" }}>Contact Details</h3>
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                              <i data-lucide="Users" className="w-6 h-6 text-orange-600"></i>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-500 font-medium">Contact</p>
+                              <p className="text-lg font-semibold text-gray-900">Chase Skelliter</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                              <i data-lucide="Phone" className="w-6 h-6 text-orange-600"></i>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-500 font-medium">Phone</p>
+                              <a href="tel:780-518-9538" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition-colors duration-200">
+                                780-518-9538
+                              </a>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                              <i data-lucide="Mail" className="w-6 h-6 text-orange-600"></i>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-500 font-medium">Email</p>
+                              <a href="mailto:chaseskr@gmail.com" className="text-lg font-semibold text-gray-900 hover:text-orange-600 transition-colors duration-200">
+                                chaseskr@gmail.com
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <h4 className="text-xl font-semibold text-gray-900 mb-4" style={{ fontFamily: "'Merriweather'" }}>Request Your Free Quote</h4>
+                      <p className="text-gray-600 mb-6">
+                        Send us an email and we'll get back to you within 24 hours.
+                      </p>
+                      <Button
+                        size="lg"
+                        className="rounded-full"
+                        onClick={() => window.location.href = 'mailto:chaseskr@gmail.com'}
+                      >
+                        <i data-lucide="Mail" className="w-5 h-5 mr-2"></i>
+                        Request a Quote
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-gray-900 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="text-2xl font-bold text-orange-400 mb-4 md:mb-0" style={{ fontFamily: "'Merriweather'" }}>EmployEase</div>
+                <div className="text-center md:text-right">
+                  <p className="text-gray-400">© 2025 EmployEase. All rights reserved.</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<HomePage />, document.getElementById('root'));
+  </script>
 </body>
 </html>
